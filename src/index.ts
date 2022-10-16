@@ -4,23 +4,28 @@
  *
  * By:      Aidan Lalonde-Novales
  * Version: 1.0
- * Since:   2022-10-11
+ * Since:   2022-10-16
  */
 
-import Stack from './Stack'
+import Stack from './MrCoxallStack'
 import promptSync from 'prompt-sync'
 
 // Constants
 const prompt = promptSync()
 const myStack = new Stack()
 
-// Input & Process
+// Input
 while (true) {
-  const tempNum = Number(prompt('Enter a number to add (-1 to pop): '))
-  if (tempNum === -1) {
+  const tempInput = prompt('Enter a number to add to the stack (or pop/peek): ')
+
+  // Process
+  if (tempInput === 'pop') {
     break
+  } else if (tempInput === 'peek') {
+    console.log(myStack.peekStack())
   } else {
-    myStack.push(tempNum)
+    const tempNum = Number(tempInput)
+    myStack.pushStack(tempNum)
   }
 }
 
